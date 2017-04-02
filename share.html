@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://115.236.55.166:9083/pack/share.html -->
+<html style="font-size: 52.0833px;"><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title></title>
+    <link href="./share_files/share.css" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <img class="content-bg" src="./share_files/bg.png">
+        <div class="header-tip">邀请您加入火拼红包</div>
+        <div class="title-tip">好玩有趣的赚钱平台</div>
+        <div class="gongxi-tip">恭喜您</div>
+        <div class="get-tip">获得一个大红包</div>
+        <div class="join-btn">
+            <a class="true-btn">立即加入</a>
+        </div>
+        <div class="look-tip">看看朋友们的手气如何</div>
+        <ul class="plist fix"><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX71.png)"></div><div class="name">女施主勿慌</div><div class="time">8分钟前</div><div class="get-num">领取了25.72元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX70.png)"></div><div class="name">进击的小黄瓜</div><div class="time">32秒钟前</div><div class="get-num">领取了5.46元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX69.png)"></div><div class="name">回归纯与真</div><div class="time">9分钟前</div><div class="get-num">领取了43.44元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX68.png)"></div><div class="name">贫道夜探青楼</div><div class="time">8分钟前</div><div class="get-num">领取了36.20元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX67.png)"></div><div class="name">张大炮的大炮</div><div class="time">21秒钟前</div><div class="get-num">领取了64.70元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX66.png)"></div><div class="name">邪恶</div><div class="time">43秒钟前</div><div class="get-num">领取了51.12元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX65.png)"></div><div class="name">淡淡然</div><div class="time">8分钟前</div><div class="get-num">领取了3.44元</div></li><li class="pitem mv"><div class="header-img" style="background-image: url(https://img.yibostg.com/20161103WAZTX64.png)"></div><div class="name">你装淑女装低调</div><div class="time">7分钟前</div><div class="get-num">领取了56.98元</div></li></ul>
+    </div>
+
+<script src="./share_files/rem.js" type="text/javascript"></script>
+<script src="./share_files/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script>
+    var total = 8;
+    var cid = 0;
+    var headers = [];
+    for(var i = 50; i < 75; i++){
+        headers.push("https://img.yibostg.com/20161103WAZTX" + i + ".png");
+    }
+    var names = ["周周", "小孩你好嫩", "冲动的乘法", "玉毛猫咪咪", "不再轻狂", "寂寞咖啡", "胸奴大帝", "要我", "快乐的欧巴", "老农民", "密斯特", "晓尸弟", "暗殇", "记得你我深爱过", "你装淑女装低调", "淡淡然", "邪恶", "张大炮的大炮", "贫道夜探青楼", "回归纯与真", "进击的小黄瓜", "女施主勿慌", "我乃高手", "一卷卷纸", "单生狗", "奉命在先", "屁儿xx爽", "关我毛事", "嘴角的苦涩", "放弃那伪娘", "以德芙人", "奈何桥前耍流氓", "触发负能量", "真.基佬领袖", "一场微醺", "夜幕の刺青", "彼岸残影", "有艾的人"];
+
+    $(function(){
+        var divs = [];
+        for(var i = 0; i < total; i++){
+            var item = getItem();
+            divs.push(item);
+        }
+        $(".plist")[0].innerHTML = divs.join("");
+        setTimeout(play, 3000);
+
+        function play(){
+            /*
+            var $lis = $(".plist li");
+            var $li = ($lis.eq(divs.length - 1));
+            $li.insertBefore($lis.eq(0));
+            $(".plist li").eq(0).addClass("mv");
+            */
+            $(".pitem:last").remove();
+            var $li = $(getItem());
+            $li.addClass("mv");
+            $li.insertBefore($(".plist li").eq(0));
+            setTimeout(play, Math.floor(Math.random() * 5400 + 1200));
+        }
+
+    });
+
+    function getItem(){
+        var i = ++cid % headers.length;
+        var temp = [];
+        temp.push('<li class="pitem">');
+        temp.push('<div class="header-img" style="background-image: url(' + headers[i] + ')"></div>');
+        temp.push('<div class="name">' + names[i] + '</div>');
+        temp.push('<div class="time">' + getTime() + '</div>');
+        temp.push('<div class="get-num">领取了'+ getMoney() +  '元</div>');
+        temp.push('</li>');
+        return temp.join("");
+    }
+
+    function getTime(){
+        var t = Math.floor(Math.random() * 600);
+        var m = Math.floor(t / 60) + 1;
+        var s = t % 60 + 1;
+        if(Math.random() > 0.5){
+            return m + "分钟前";
+        }
+        return s + "秒钟前";
+    }
+
+    function getMoney(){
+        var num = (Math.random() * 66 + "").substr(0, 5);
+        if(num.indexOf(".") == 1){
+            num = num.substr(0, 4);
+        }
+        return num;
+    }
+</script>
+
+</body></html>
